@@ -21,7 +21,14 @@
             </thead>
             <tbody>
                 <% if (categories.length > 0) { %>
-                    <!-- lista de categorias vai aqui -->
+                    <% categories.forEach(function(cat) { %>
+                        <tr>
+                            <th><%= cat.id %></th>
+                            <th><%= cat.name %></th>
+                            <th><%= cat.created_at %></th>
+                            <th><%= cat.updated_at %></th>
+                        </tr>
+                    <% }) %>
                 <%} else {%>
                 <tr>
                     <td colspan="4">Nenhuma categoria cadastrada</td>

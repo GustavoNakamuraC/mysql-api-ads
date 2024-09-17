@@ -22,9 +22,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/categories', async function (req: Request, res: Response) {
     const [rows] = await connection.query("SELECT * FROM categories");
+    console.log(rows)
     return res.render('categories/index', {
         categories: rows
     });
 });
 
-app.listen('3000', () => console.log("Server is listening on port 3000"));
+app.listen(3000, () => console.log("http://localhost:3000"));
