@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container mt-5"></div>
+    <div class="container mt-5 ">
         <h1 class="mb-4">Lista de Usuários</h1>
         <table class="table table-striped">
             <thead>
@@ -20,16 +23,29 @@
                 </tr>
             </thead>
             <tbody>
-                <% if (categories.length > 0) { %>
-                    
+                <% if (users.length > 0) { %>
+                    <% users.forEach(user => { %>
+                        <td><%= user.id %></td>
+                        <td><%= user.name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.paper %></td>
+                        <td><%= user.registerDate %></td>
+                        <td>
+                            <a href="#">Editar</a>
+                            <a href="#">Excluir</a>
+                        </td>
+                    <% }) %>
                 <%} else {%>
                 <tr>
-                    <td colspan="4">Nenhuma categoria cadastrada</td>
+                    <td colspan="6">Nenhum usuário cadastrado</td>
                 </tr>
                 <% } %>
             </tbody>
         </table>
-        <a href="#" class="btn btn-primary mt-3">Adicionar</a>
+        <a href="/users/add" class="btn btn-primary mt-3">Adicionar</a>
     </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

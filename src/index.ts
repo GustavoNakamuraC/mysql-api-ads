@@ -19,8 +19,22 @@ app.use(express.urlencoded({ extended: true }));
 
 //Usuários
 app.get('/users', async function (req: Request, res: Response){
-    
-    return res.render('users/userTables');
+    const [rows] = await connection.query("SELECT * FROM users");
+    console.log(rows);
+    return res.render('users/userTables',{
+        users: rows
+    });
+});
+
+app.get('/users/add', async function (req: Request, res: Response) {
+    return res.render('users/register')
+});
+
+app.post('/users/save', async function (req: Request, res: Response) {
+    const body = req.body;
+    const {password, confirmPassword} = req.body;
+
+    res.redirect('users');
 });
 
 
@@ -33,6 +47,8 @@ app.get('/categories', async function (req: Request, res: Response) {
 });
 
 app.get('/categories/form', async function (req:Request, res: Response) {
+    const body = req.body;
+    const insertQuery = 'INSERT INTO users'
     return res.render('categories/form')
 });
 
