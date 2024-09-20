@@ -1,0 +1,11 @@
+SELECT DATE_FORMAT(NOW(), '%d/%m/%Y') AS formatted_date;
+
+CREATE TABLE users(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    senha VARCHAR(50) NOT NULL,
+    papel VARCHAR(50) NOT NULL,
+    ativo BOOLEAN NOT NULL,
+    dataCadastro DATE DEFAULT CURRENT_TIMESTAMP
+);
