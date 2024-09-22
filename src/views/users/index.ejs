@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="d-flex justify-content-end bg-dark">
+        <a href="/users" class="btn btn-secondary m-3">Usuários</a>
+    </header>
+
+    <main class="d-flex mt-4 flex-column">
+        <h1 class="text-center">Últimos Posts do Blog</h1>
+        <!-- Linha de posts -->
+        <div class="d-flex justify-content-between flex-wrap">
+            <% posts.forEach((post, i) => { %>
+            <div class="border rounded-3 w-25 mb-4 mx-5">
+                    <!-- Quadrado -->
+                    <div style="background-color: #b9b9b9;" 
+                        class="rounded-3 d-flex align-items-center justify-content-center p-5">
+
+                        <p style="color: #8a8a8a;" class="fs-2 mb-0"><b>400 x 200</b></p>
+                    </div>
+                        
+                    <!-- Textos -->
+                    <div class="p-3">
+                        <h5><%= post.title %></h5>
+                        <p><%= post.description %></p>
+                        <a href="<%= post.link %>" class="btn btn-primary">Leia mais</a>
+                    </div>
+            </div>
+            <% }); %>
+        </div>
+
+        <!-- <div class="d-flex justify-content-start">
+            <% for(i = 1; i <= 3; i++) { %>
+                <div class="border rounded-3 w-25">
+
+                    <div style="background-color: #b9b9b9;" class="rounded-3 d-flex align-items-center justify-content-center p-5">
+                        <p style="color: #8a8a8a;" class="fs-2 mb-0"><b>400 x 200</b></p>
+                    </div>
+                    
+                    <div class="p-3">
+                        <h5> Titulo do post 1 </h5>
+                        <p>Uma breve descrição sobre o conteúdo do post. Este post fala sobre...</p>
+                        <button class="btn btn-primary">Leia mais</button>
+                    </div>
+                </div>
+            <% } %>
+        </div> -->
+    </main>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

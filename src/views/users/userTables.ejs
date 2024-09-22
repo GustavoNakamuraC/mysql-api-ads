@@ -25,15 +25,19 @@
             <tbody>
                 <% if (users.length > 0) { %>
                     <% users.forEach(user => { %>
-                        <td><%= user.id %></td>
-                        <td><%= user.name %></td>
-                        <td><%= user.email %></td>
-                        <td><%= user.paper %></td>
-                        <td><%= user.registerDate %></td>
-                        <td>
-                            <a href="#">Editar</a>
-                            <a href="#">Excluir</a>
-                        </td>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.role %></td>
+                            <td><%= user.registerDate %></td>
+                            <td class="d-flex gap-4" >
+                                <a href="#" class="btn btn-primary">Editar</a>
+                                <form action="/users/<%= user.id %>/delete" method="post">
+                                    <button type="submit" class="btn btn-primary"> Excluir </button>
+                                </form>
+                            </td>
+                        </tr>
                     <% }) %>
                 <%} else {%>
                 <tr>
