@@ -12,46 +12,65 @@
     <header class="d-flex justify-content-end bg-dark">
         <a href="/users" class="btn btn-secondary m-3">Usuários</a>
     </header>
-
-    <main class="d-flex mt-4 flex-column">
-        <h1 class="text-center">Últimos Posts do Blog</h1>
-        <!-- Linha de posts -->
-        <div class="d-flex justify-content-between flex-wrap">
-            <% posts.forEach((post, i) => { %>
-            <div class="border rounded-3 w-25 mb-4 mx-5">
-                    <!-- Quadrado -->
-                    <div style="background-color: #b9b9b9;" 
-                        class="rounded-3 d-flex align-items-center justify-content-center p-5">
-
-                        <p style="color: #8a8a8a;" class="fs-2 mb-0"><b>400 x 200</b></p>
-                    </div>
-                        
-                    <!-- Textos -->
-                    <div class="p-3">
-                        <h5><%= post.title %></h5>
-                        <p><%= post.description %></p>
-                        <a href="<%= post.link %>" class="btn btn-primary">Leia mais</a>
-                    </div>
-            </div>
-            <% }); %>
-        </div>
-
-        <!-- <div class="d-flex justify-content-start">
-            <% for(i = 1; i <= 3; i++) { %>
-                <div class="border rounded-3 w-25">
-
-                    <div style="background-color: #b9b9b9;" class="rounded-3 d-flex align-items-center justify-content-center p-5">
-                        <p style="color: #8a8a8a;" class="fs-2 mb-0"><b>400 x 200</b></p>
-                    </div>
-                    
-                    <div class="p-3">
-                        <h5> Titulo do post 1 </h5>
-                        <p>Uma breve descrição sobre o conteúdo do post. Este post fala sobre...</p>
-                        <button class="btn btn-primary">Leia mais</button>
+    
+    <main>
+        <div class="container mt-5">
+            <h2 class="text-center">Últimos Posts do Blog</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" v-for="let i in posts">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5>Título do Post 1</h5>
+                            <p>Uma breve descrição sobre o conteúdo do post.Este post fala sobre...</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
                     </div>
                 </div>
-            <% } %>
-        </div> -->
+                <div class="col-md-4 mb-4" v-for="let i in posts">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5>Título do Post 2</h5>
+                            <p>Uma breve descrição sobre o conteúdo do post.Este post fala sobre...</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" v-for="let i in posts">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5>Título do Post 3</h5>
+                            <p>Uma breve descrição sobre o conteúdo do post.Este post fala sobre...</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4" v-for="let i in posts">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5>Título do Post 4</h5>
+                            <p>Uma breve descrição sobre o conteúdo do post.Este post fala sobre...</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" v-for="let i in posts">
+                    <div class="card h-100">
+                        <img src="https://via.placeholder.com/400x200" class="card-img-top" alt="Post Image">
+                        <div class="card-body">
+                            <h5>Título do Post 5</h5>
+                            <p>Uma breve descrição sobre o conteúdo do post.Este post fala sobre...</p>
+                            <a href="#" class="btn btn-primary">Leia mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>         
     </main>
 
     <!-- Bootstrap JS CDN -->

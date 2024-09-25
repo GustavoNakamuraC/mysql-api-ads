@@ -18,20 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Usuários
-app.get('/', async function (req: Request, res: Response) {
-    let i = 0;
+app.get('/', async function (req: Request, res: Response) {  
+    return res.render('users/index');
+});
 
-    const posts = [
-        { title: 'Título do Post 1', description: 'Uma breve descrição sobre o conteúdo do post. Este post fala sobre...', link: '#' },
-        { title: 'Título do Post 2', description: 'Uma breve descrição sobre o conteúdo do post. Este post fala sobre...', link: '#' },
-        { title: 'Título do Post 3', description: 'Uma breve descrição sobre o conteúdo do post. Este post fala sobre...', link: '#' },
-        { title: 'Título do Post 4', description: 'Uma breve descrição sobre o conteúdo do post. Este post fala sobre...', link: '#' }
-    ];
-
-    return res.render('users/index',{
-        posts: posts
-    })
-})
 
 app.get('/users', async function (req: Request, res: Response){
     const [rows] = await connection.query(
