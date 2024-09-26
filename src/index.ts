@@ -39,7 +39,6 @@ app.post('/users', async function (req: Request, res: Response) {
     const { password, confirmPassword, role, active } = req.body;
 
     if(password != confirmPassword){
-        console.log(password, confirmPassword);
         return res.render('users/register', { 
             error: 'Erro na confirmação das senhas.' 
         });
@@ -61,26 +60,30 @@ app.post('/users/:id/delete', async function (req: Request, res: Response) {
     res.redirect('/users');
 })
 
-app.get('/login', async function(req: Request, res: Response){
-    return res.render('users/login');
+app.get('/login', async function(req: Request, res: Response) {
+    return res.render('users/login', {
+        error: null
+    });
 });
 
-//------------------------------------------------------------------------
+app.post('/login', async function(req: Request, res: Response) {
+    const body = req.body;
+    const verifyQuery = 'SELECT email, password FROM users WHERE email = ? AND password = ?';
+
+    const [achou] = await connection.query(verifyQuery, [body.email, body.password]);
+
+    if(Array.isArray(achou) && achou.length === 0){
+        return res.render('users/login', { 
+            error: 'Erro na confirmação das senhas.' 
+        });
+    }
+
+    return res.redirect('/users');
+})
 
 app.get('/', async function (req: Request, res: Response) {  
     return res.render('users/index');
 });
-
-
-app.post('')
-
-
-
-
-
-
-
-
 
 
 app.listen(3000, () => console.log("http://localhost:3000/users"));
