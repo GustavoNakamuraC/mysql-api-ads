@@ -18,11 +18,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 //Usuários
-app.get('/', async function (req: Request, res: Response) {  
-    return res.render('users/index');
-});
-
-
 app.get('/users', async function (req: Request, res: Response){
     const [rows] = await connection.query(
         "SELECT id, name, email, role, DATE_FORMAT(registerDate, '%d/%m/%Y') AS registerDate FROM users"
@@ -39,7 +34,7 @@ app.get('/users/add', async function (req: Request, res: Response) {
     });
 });
 
-app.post('/users/save', async function (req: Request, res: Response) {
+app.post('/users', async function (req: Request, res: Response) {
     const body = req.body;
     const { password, confirmPassword, role, active } = req.body;
 
@@ -66,4 +61,26 @@ app.post('/users/:id/delete', async function (req: Request, res: Response) {
     res.redirect('/users');
 })
 
-app.listen(3000, () => console.log("http://localhost:3000"));
+app.get('/login', async function(req: Request, res: Response){
+    return res.render('users/login');
+});
+
+//------------------------------------------------------------------------
+
+app.get('/', async function (req: Request, res: Response) {  
+    return res.render('users/index');
+});
+
+
+app.post('')
+
+
+
+
+
+
+
+
+
+
+app.listen(3000, () => console.log("http://localhost:3000/users"));
