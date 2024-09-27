@@ -86,4 +86,32 @@ app.get('/', async function (req: Request, res: Response) {
 });
 
 
+//Categorias
+app.get('/categories', async function (req: Request, res: Response) {
+    const [rows] = await connection.query("SELECT * FROM categories");
+    return res.render('categories/index', {
+        categories: rows
+    });
+});
+
+app.get("/categories/form", async function (req: Request, res: Response) {
+    return res.render("categories/form");
+});
+
+app.post("/categories/save", async function(req: Request, res: Response) {
+    const body = req.body;
+    const insertQuery = "INSERT INTO categories (name) VALUES (?)";
+    await connection.query(insertQuery, [body.name]);
+
+    res.redirect("/categories");
+});
+
+app.post("/categories/delete/:id", async function (req: Request, res: Response) {
+    const id = req.params.id;
+    const sqlDelete = "DELETE FROM categories WHERE id = ?";
+    await connection.query(sqlDelete, [id]);
+
+    res.redirect("/categories");
+});
+
 app.listen(3000, () => console.log("http://localhost:3000/users"));
